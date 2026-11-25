@@ -1,0 +1,20 @@
+services:
+  sugartaxae:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sugartaxae
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4237:4237"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4237
+      SUGARTAXAE_DATA_DIR: /app/data
+      BASE_PATH: ${BASE_PATH:-}
+    volumes:
+      - sugartaxae_data:/app/data
+
+volumes:
+  sugartaxae_data:

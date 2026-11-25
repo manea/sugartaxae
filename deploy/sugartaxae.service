@@ -1,0 +1,14 @@
+[Unit]
+Description=SugarTaxAE UAE Tiered Sweetened Beverages Excise (CD 197/2025 & FTA 10/2025) Studio
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/sugartaxae
+EnvironmentFile=/etc/sugartaxae/.env
+ExecStart=/usr/bin/node --no-warnings /opt/sugartaxae/server/index.mjs
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
